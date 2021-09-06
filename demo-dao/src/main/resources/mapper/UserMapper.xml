@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lele.demo.dao.UserMapper">
+    <resultMap id="BaseResultMap" type="com.lele.demo.model.entity.User" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
+        <result column="modify_at" property="modifyAt" jdbcType="TIMESTAMP" />
+        <result column="user_name" property="userName" jdbcType="VARCHAR" />
+        <result column="age" property="age" jdbcType="INTEGER" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, create_at, modify_at, user_name, age
+    </sql>
+
+    <select id="queryUserList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from ${table};
+    </select>
+</mapper>
